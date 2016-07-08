@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   render() {
-    const { loading, style } = this.props;
+    const { loading, addSwatch, swatches, style } = this.props;
     const { activeStartDialog } = this.state;
     const loadClass = loading ? 'loading' : '';
 
@@ -57,6 +57,8 @@ class App extends Component {
           </div>
         </div>
         <StartDialog
+          addSwatch={addSwatch}
+          swatches={swatches}
           dismiss={this.dismissStartDialog}
           isOpen={activeStartDialog} />
       </div>

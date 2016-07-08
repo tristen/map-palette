@@ -7,7 +7,6 @@
             "type": "vector"
         }
     },
-    "sprite": "mapbox://sprites/tristen/cipjb73dg001kbjm5gd8gmhai",
     "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
     "layers": [
         {
@@ -7111,29 +7110,12 @@
                         ]
                     ]
                 },
-                "icon-image": {
-                    "stops": [
-                        [
-                            12,
-                            "{maki}-11"
-                        ],
-                        [
-                            13,
-                            "{maki}-15"
-                        ]
-                    ]
-                },
                 "symbol-spacing": 250,
                 "text-font": [
                     "DIN Offc Pro Medium",
                     "Arial Unicode MS Regular"
                 ],
                 "text-padding": 2,
-                "text-offset": [
-                    0,
-                    0.75
-                ],
-                "text-anchor": "top",
                 "text-field": {
                     "stops": [
                         [
@@ -7663,26 +7645,6 @@
                         ]
                     ]
                 },
-                "text-anchor": "top",
-                "text-offset": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            7.99,
-                            [
-                                0,
-                                0.1
-                            ]
-                        ],
-                        [
-                            8,
-                            [
-                                0,
-                                0
-                            ]
-                        ]
-                    ]
-                },
                 "text-font": {
                     "base": 1,
                     "stops": [
@@ -7701,8 +7663,7 @@
                             ]
                         ]
                     ]
-                },
-                "icon-image": "dot-10"
+                }
             },
             "paint": {
                 "text-halo-width": 1,
@@ -7790,29 +7751,9 @@
                         ]
                     ]
                 },
-                "text-offset": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            7.99,
-                            [
-                                0,
-                                -0.25
-                            ]
-                        ],
-                        [
-                            8,
-                            [
-                                0,
-                                0
-                            ]
-                        ]
-                    ]
-                },
                 "text-anchor": "bottom",
                 "text-field": "{name_en}",
-                "text-max-width": 7,
-                "icon-image": "dot-10"
+                "text-max-width": 7
             },
             "paint": {
                 "text-color": "hsl(0, 0%, 42%)",
@@ -7880,7 +7821,6 @@
                         ]
                     ]
                 },
-                "icon-image": "dot-11",
                 "text-font": {
                     "base": 1,
                     "stops": [
@@ -7900,39 +7840,7 @@
                         ]
                     ]
                 },
-                "text-offset": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            7.99,
-                            [
-                                0,
-                                0.15
-                            ]
-                        ],
-                        [
-                            8,
-                            [
-                                0,
-                                0
-                            ]
-                        ]
-                    ]
-                },
                 "icon-size": 1,
-                "text-anchor": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            7,
-                            "top"
-                        ],
-                        [
-                            8,
-                            "center"
-                        ]
-                    ]
-                },
                 "text-field": "{name_en}",
                 "text-max-width": 7
             },
@@ -8002,7 +7910,6 @@
                         ]
                     ]
                 },
-                "icon-image": "dot-11",
                 "text-font": {
                     "base": 1,
                     "stops": [
@@ -8022,39 +7929,7 @@
                         ]
                     ]
                 },
-                "text-offset": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            7.99,
-                            [
-                                0,
-                                -0.25
-                            ]
-                        ],
-                        [
-                            8,
-                            [
-                                0,
-                                0
-                            ]
-                        ]
-                    ]
-                },
                 "icon-size": 1,
-                "text-anchor": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            7,
-                            "bottom"
-                        ],
-                        [
-                            8,
-                            "center"
-                        ]
-                    ]
-                },
                 "text-field": "{name_en}",
                 "text-max-width": 7
             },

@@ -9,7 +9,9 @@ export default class SourceDialog extends Component {
   }
 
   render() {
-    const { isOpen, dismiss } = this.props;
+    const { isOpen, dismiss, addSwatch, swatches } = this.props;
+
+    console.log('start dialog', swatches);
 
     return (
       <div className='col12'>
@@ -29,7 +31,7 @@ export default class SourceDialog extends Component {
                 />
               </div>
             </div>
-            <DragDrop />
+            <DragDrop addSwatch={addSwatch} />
           </div>
         </Modal>
       </div>
@@ -39,5 +41,7 @@ export default class SourceDialog extends Component {
 
 SourceDialog.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  dismiss: PropTypes.func.isRequired
+  dismiss: PropTypes.func.isRequired,
+  addSwatch: PropTypes.func.isRequired,
+  swatches: PropTypes.object.isRequired
 };

@@ -8,3 +8,11 @@ export function isLoading(loading) {
     loading
   };
 }
+
+export function addSwatch(prop, hex) {
+  return {
+    type: types.SWATCH,
+    prop,
+    hex
+  };
+}
