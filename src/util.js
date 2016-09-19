@@ -18,7 +18,7 @@ export const modalStyle = {
     bottom: 'auto',
     width: '720px',
     border: 'none',
-    overflow: 'hidden',
+    overflow: 'visible',
     WebkitOverflowScrolling: 'touch',
     borderRadius: '3px',
     outline: 'none',
