@@ -7,12 +7,14 @@ export default class Palette extends Component {
     const { value } = props;
     this.state = {
       colorpicker: false,
+      hovertip: false,
       value: value
     };
 
     this.onChange = this.onChange.bind(this);
     this.onPickerChange = this.onPickerChange.bind(this);
     this.toggleColorpicker = this.toggleColorpicker.bind(this);
+    this.toggleHovertip = this.toggleHovertip.bind(this);
   }
 
   componentWillReceiveProps(next) {
@@ -31,25 +33,28 @@ export default class Palette extends Component {
     this.setState({ colorpicker: !this.state.colorpicker });
   }
 
+  toggleHovertip() {
+    this.setState({ hovertip: !this.state.hovertip });
+  }
+
   render() {
     const { label } = this.props;
-    const { value, colorpicker } = this.state;
+    const { value, colorpicker, hovertip } = this.state;
 
     return (
       <div className='swatch contain'>
-        <div className='keyline-all round'>
+        {hovertip && <div className='tooltip'>
+          {value}
+          <small>{label}</small>
+        </div>}
+
+        <div>
           <button
+            onMouseEnter={this.toggleHovertip}
+            onMouseLeave={this.toggleHovertip}
             onClick={this.toggleColorpicker}
             style={{backgroundColor: value}}
-            className='row3 round-top unstyled' />
-          <div className='pad1 keyline-top'>
-            <input
-              type='text'
-              className='palette-input'
-              onChange={this.onChange.bind(this)}
-              value={value} />
-            <span className='small quiet'>{label}</span>
-          </div>
+            className='unstyled' />
         </div>
         {colorpicker && <ColorPicker
           onChange={this.onPickerChange.bind(this)}

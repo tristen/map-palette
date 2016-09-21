@@ -28,7 +28,10 @@ class DragDrop extends Component {
     const dragging = isOver ? 'dragging' : '';
 
     return connectDropTarget(
-      <div className={`fill-grey round pad4 ${dragging}`} />
+      <div>
+        {this.props.children}
+        <div className={`${dragging}`} />
+      </div>
     );
   }
 }

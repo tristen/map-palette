@@ -17,14 +17,14 @@ export default class Palette extends Component {
 
     function renderSwatch(d, i)  {
       return (
-        <div key={i} className='col2 pad0x'>
+        <div key={i} className='col2'>
           <Swatch label={d.label} value={d.value} />
         </div> 
       ); 
     }
 
     return (
-      <div className='col12 clearfix mobile-cols'>
+      <div className='col12 clearfix keyline-all round mobile-cols'>
         {swatches.map(renderSwatch.bind(this))}
       </div>
     );

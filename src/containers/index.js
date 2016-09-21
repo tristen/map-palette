@@ -15,10 +15,10 @@ import Palette from '../components/palette';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.save = this.save.bind(this);
+    this.download = this.download.bind(this);
   }
 
-  save() {
+  download() {
     console.log('Save map');
   }
 
@@ -27,28 +27,29 @@ class App extends Component {
     const loadClass = loading ? 'loading' : '';
 
     return (
-      <div className={`pin-topright pin-bottomright col12 ${loadClass}`}>
-        <Map style={style} />
-        <div className='pin-topleft pad1 z1 sidebar'>
-          <div className='clearfix pill space-bottom1 keyline-stroke round'>
+      <DragDrop addSwatch={addSwatch}>
+        <div className={`pin-topright pin-bottomright col12 ${loadClass}`}>
+          <Map style={style} />
+          <header className='pin-topleft z10 pad1'>
+            <div className='clearfix fill-dark pad1 round-top dark'>
+              <h2>Map palette</h2>
+              <p>Drag and drop an image or adjust the swatches below</p>
+            </div>
             <button
-              onClick={this.save}
-              className='button fill-darken1 col6'>
-              Save
+              onClick={this.download}
+              className='button col12 round-bottom'>
+              Download
             </button>
-          </div>
-        </div>
+          </header>
 
-        <div className='pin-bottom pad1 z1 col12 clearfix'>
-          <div className='col6 margin3'>
+          <div className='pin-bottom pad1 z1 col6 margin3'>
             <div className='fill-white contain'>
-              <DragDrop addSwatch={addSwatch} />
               <Palette swatches={swatches} />
             </div>
           </div>
-        </div>
 
-      </div>
+        </div>
+      </DragDrop>
     );
   }
 }
