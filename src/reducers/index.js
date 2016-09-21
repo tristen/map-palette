@@ -5,12 +5,12 @@ import * as types from '../constants/action_types.js';
 const fs = require('fs'); // substack/brfs#39
 
 const swatches = {
-  Vibrant: 'red',
-  Muted: '#eee',
-  DarkVibrant: '#333',
-  DarkMuted: '#ccc',
-  LightVibrant: 'pink',
-  LightMuted: 'coral'
+  Vibrant: '#fff',
+  Muted: '#cbd3d4',
+  DarkVibrant: '#e8edeb',
+  DarkMuted: '#f0f5f3',
+  LightVibrant: '#dee2e3',
+  LightMuted: '#78888a'
 };
 
 const defaultStyle = JSON.parse(fs.readFileSync(__dirname + '/../data/default_style.json', 'utf8'), (p, v) => {

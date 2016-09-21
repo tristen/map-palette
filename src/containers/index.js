@@ -9,25 +9,13 @@ import * as actions from '../actions';
 
 // Components
 import Map from '../components/map';
-import StartDialog from '../components/start_dialog';
+import DragDrop from '../components/drag_drop';
+import Palette from '../components/palette';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.triggerStartDialog = this.triggerStartDialog.bind(this);
-    this.dismissStartDialog = this.dismissStartDialog.bind(this);
     this.save = this.save.bind(this);
-    this.state = {
-      activeStartDialog: true
-    }
-  }
-
-  triggerStartDialog() {
-    this.setState({ activeStartDialog: true });
-  }
-
-  dismissStartDialog() {
-    this.setState({ activeStartDialog: false });
   }
 
   save() {
@@ -36,7 +24,6 @@ class App extends Component {
 
   render() {
     const { loading, addSwatch, swatches, style } = this.props;
-    const { activeStartDialog } = this.state;
     const loadClass = loading ? 'loading' : '';
 
     return (
@@ -45,22 +32,22 @@ class App extends Component {
         <div className='pin-topleft pad1 z1 sidebar'>
           <div className='clearfix pill space-bottom1 keyline-stroke round'>
             <button
-              onClick={this.triggerStartDialog}
-              className='button fill-darken1 keyline-left col6'>
-              Create new style
-            </button>
-            <button
               onClick={this.save}
               className='button fill-darken1 col6'>
               Save
             </button>
           </div>
         </div>
-        <StartDialog
-          addSwatch={addSwatch}
-          swatches={swatches}
-          dismiss={this.dismissStartDialog}
-          isOpen={activeStartDialog} />
+
+        <div className='pin-bottom pad1 z1 col12 clearfix'>
+          <div className='col6 margin3'>
+            <div className='fill-white contain'>
+              <DragDrop addSwatch={addSwatch} />
+              <Palette swatches={swatches} />
+            </div>
+          </div>
+        </div>
+
       </div>
     );
   }

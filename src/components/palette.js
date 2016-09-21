@@ -24,7 +24,7 @@ export default class Palette extends Component {
     }
 
     return (
-      <div className='col12 clearfix mobile-cols pad0x'>
+      <div className='col12 clearfix mobile-cols'>
         {swatches.map(renderSwatch.bind(this))}
       </div>
     );
