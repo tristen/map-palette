@@ -1,6 +1,7 @@
 'use strict';
 
-import * as types from '../constants/action_types.js';
+import * as types from '../constants/action_types';
+import { deepMap } from '../utils';
 
 const fs = require('fs'); // substack/brfs#39
 
@@ -39,9 +40,11 @@ const data = (state = initialState, action) => {
     });
 
     case types.SWATCH:
-      let foo = {};
-      foo[action.prop] = action.hex;
       return Object.assign({}, state, {
+      style: deepMap(state.style, (p, v) => {
+        if (p === state.swatches[action.prop]) p = `${action.hex}`;
+        return p;
+      }),
       swatches: Object.assign({}, state.swatches, {
         [action.prop]: action.hex
       })

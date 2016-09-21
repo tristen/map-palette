@@ -3,7 +3,6 @@
 /* global mapboxgl */
 
 import React, { Component, PropTypes } from 'react';
-import { getIcon } from '../util';
 import tinyColor from 'tinycolor2';
 
 export default class Map extends Component {
@@ -27,10 +26,7 @@ export default class Map extends Component {
   }
 
   componentWillReceiveProps(next) {
-    const { style } = this.props;
-
-    // TODO do something with `this.map`
-    // this.map.setStyle(style);
+    this.map.setStyle(next.style);
   }
 
   render() {
