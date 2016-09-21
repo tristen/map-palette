@@ -1,18 +1,32 @@
 'use strict';
 
 import * as types from '../constants/action_types.js';
-import defaultStyle from '../data/default_style.json';
+
+const fs = require('fs'); // substack/brfs#39
+
+const swatches = {
+  Vibrant: 'red',
+  Muted: '#eee',
+  DarkVibrant: '#333',
+  DarkMuted: '#ccc',
+  LightVibrant: 'pink',
+  LightMuted: 'coral'
+};
+
+const defaultStyle = JSON.parse(fs.readFileSync(__dirname + '/../data/default_style.json', 'utf8'), (p, v) => {
+  // Conditions are ordered light to dark
+  if (v === '#fff') v = `${swatches.Vibrant}`;
+  if (v === '#f0f5f3') v = `${swatches.DarkMuted}`;
+  if (v === '#e8edeb') v = `${swatches.DarkVibrant}`;
+  if (v === '#dee2e3') v = `${swatches.LightVibrant}`;
+  if (v === '#cbd3d4') v = `${swatches.Muted}`;
+  if (v === '#78888a') v = `${swatches.LightMuted}`;
+  return v;
+});
 
 const initialState = {
   loading: false,
-  swatches: {
-    Vibrant: '',
-    Muted: '',
-    DarkVibrant: '',
-    DarkMuted: '',
-    LightVibrant: '',
-    LightMuted: ''
-  },
+  swatches: swatches,
   style: defaultStyle
 };
 
