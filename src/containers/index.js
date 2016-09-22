@@ -63,7 +63,7 @@ class App extends Component {
   }
 
   render() {
-    const { swatches, manual, style } = this.props;
+    const { swatches, manual, style, updateSwatch } = this.props;
 
     return (
       <DragDrop upload={this.upload}>
@@ -90,7 +90,9 @@ class App extends Component {
 
           <div className='pin-bottom space-bottom2 z1 col6 margin3'>
             <div className='fill-white contain'>
-              <Palette swatches={swatches} />
+              <Palette
+                updateSwatch={updateSwatch}
+                swatches={swatches} />
             </div>
           </div>
 

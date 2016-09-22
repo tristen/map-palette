@@ -7,8 +7,9 @@ export default class Palette extends Component {
   }
 
   render() {
+    const { updateSwatch } = this.props;
     const swatches = [];
-    for (const prop in this.props.swatches) {
+    for (let prop in this.props.swatches) {
       swatches.push({
         label: prop,
         value: this.props.swatches[prop]
@@ -18,7 +19,10 @@ export default class Palette extends Component {
     function renderSwatch(d, i)  {
       return (
         <div key={i} className='col2'>
-          <Swatch label={d.label} value={d.value} />
+          <Swatch
+            updateSwatch={updateSwatch}
+            label={d.label}
+            value={d.value} />
         </div> 
       ); 
     }
@@ -32,5 +36,6 @@ export default class Palette extends Component {
 }
 
 Palette.propTypes = {
+  updateSwatch: PropTypes.func.isRequired,
   swatches: PropTypes.object.isRequired
 };

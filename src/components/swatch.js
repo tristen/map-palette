@@ -1,32 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import ColorPicker from 'react-colorpickr';
+import debounce from 'lodash.debounce';
 
 export default class Palette extends Component {
   constructor(props) {
     super(props);
-    const { value } = props;
     this.state = {
       colorpicker: false,
-      hovertip: false,
-      value: value
+      hovertip: false
     };
 
-    this.onChange = this.onChange.bind(this);
-    this.onPickerChange = this.onPickerChange.bind(this);
+    this.onPickerChange = debounce(this.onPickerChange.bind(this), 100);
     this.toggleColorpicker = this.toggleColorpicker.bind(this);
     this.toggleHovertip = this.toggleHovertip.bind(this);
   }
 
-  componentWillReceiveProps(next) {
-    this.setState({ value: next.value });
-  }
-
   onPickerChange(e) {
-    this.setState({ value: '#' + e.hex });
-  }
-
-  onChange(e) {
-    this.setState({ value: e.target.value });
+    const { updateSwatch, label } = this.props;
+    this.props.updateSwatch(label, '#' + e.hex);
   }
 
   toggleColorpicker() {
@@ -38,8 +29,8 @@ export default class Palette extends Component {
   }
 
   render() {
-    const { label } = this.props;
-    const { value, colorpicker, hovertip } = this.state;
+    const { label, value } = this.props;
+    const { colorpicker, hovertip } = this.state;
 
     return (
       <div className='swatch contain'>
@@ -67,5 +58,6 @@ export default class Palette extends Component {
 
 Palette.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
+  updateSwatch: PropTypes.func.isRequired
 };
