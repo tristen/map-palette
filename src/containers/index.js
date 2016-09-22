@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
+import { saveAs } from 'filesaver.js';
 import * as actions from '../actions';
 
 // Components
@@ -16,33 +17,45 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.download = this.download.bind(this);
+    this.manual = this.manual.bind(this);
   }
 
   download() {
-    console.log('Save map');
+    saveAs(new Blob([JSON.stringify(this.props.style)], {
+      type: 'application/json'
+    }), 'style.json');
+  }
+
+  manual(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const event = new MouseEvent('click');
+    this.refs.manual.dispatchEvent(event);
   }
 
   render() {
-    const { loading, addSwatch, swatches, style } = this.props;
-    const loadClass = loading ? 'loading' : '';
+    const { addSwatch, swatches, style } = this.props;
 
     return (
       <DragDrop addSwatch={addSwatch}>
-        <div className={`pin-topright pin-bottomright col12 ${loadClass}`}>
+        <div className={`pin-topright pin-bottomright col12`}>
           <Map style={style} />
           <header className='pin-topleft z10 pad1'>
-            <div className='clearfix fill-dark pad1 round-top dark'>
-              <h2>Map palette</h2>
-              <p>Drag and drop an image or adjust the swatches below</p>
+            <div className='lifted round'>
+              <div className='clearfix pad2'>
+                <h3 className='space-bottom1'>Map palette</h3>
+                <p>Drag and drop or <a href='#' onClick={this.manual}>select</a> an image or adjust the swatches to change the color of the map.</p>
+                <input ref='manual' className='hidden' type='file' />
+              </div>
+              <button
+                onClick={this.download}
+                className='button col12 round-bottom'>
+                Download style
+              </button>
             </div>
-            <button
-              onClick={this.download}
-              className='button col12 round-bottom'>
-              Download
-            </button>
           </header>
 
-          <div className='pin-bottom pad1 z1 col6 margin3'>
+          <div className='pin-bottom space-bottom2 z1 col6 margin3'>
             <div className='fill-white contain'>
               <Palette swatches={swatches} />
             </div>
@@ -53,11 +66,6 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  // TODO Any prop types received from the main app?
-  // loadLayers: PropTypes.func.isRequired
-};
 
 function mapStateToProps(state) {
   return state;

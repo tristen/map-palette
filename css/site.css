@@ -1,5 +1,4 @@
 /* Disable text selection */
-body { margin:0; padding:0; }
 body * {
   -webkit-touch-callout:none;
   -webkit-user-select:none;
@@ -8,18 +7,6 @@ body * {
       -ms-user-select:none;
           user-select:none;
   }
-
-body,
-input,
-textarea {
-  color:#404040;
-  color:rgba(0,0,0,0.75);
-  font:16px/24px 'Helvetica neue', Helvetica, sans-serif;
-  -webkit-font-smoothing:antialiased;
-  }
-
-/* base adjustments */
-.loading:before { background-color:rgba(0,0,0,0.1); }
 
 .z10 { z-index:10; }
 
@@ -38,7 +25,7 @@ header {
   width:240px;
   }
   header > div {
-    background-color:#000;
+    background-color:#fff;
     }
 
 
@@ -61,12 +48,14 @@ button.unstyled {
   background:#181818;
   font-weight:bold;
   color:#fff;
+  line-height:14px;
   border-radius:3px;
   bottom:45px;
   display:block;
-  padding:5px 10px;
+  padding:10px 10px 8px;
+  min-width:100px;
   width:auto;
-  left:-10px;
+  left:0;
   text-align:center;
   z-index:1000;
   }
@@ -79,7 +68,7 @@ button.unstyled {
     display:block;
     position:absolute;
     bottom:-5px;
-    left:5px;
+    left:45px;
     z-index:1000;
     }
 

@@ -26,7 +26,6 @@ const defaultStyle = JSON.parse(fs.readFileSync(__dirname + '/../data/default_st
 });
 
 const initialState = {
-  loading: false,
   swatches: swatches,
   style: defaultStyle
 };

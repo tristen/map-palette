@@ -38,6 +38,7 @@
     "uglify-js": "^2.7.3"
   },
   "dependencies": {
+    "filesaver.js": "^0.2.0",
     "node-vibrant": "^2.1.2",
     "react": "^15.3.2",
     "react-colorpickr": "^4.2.0",
