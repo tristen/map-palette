@@ -1,1 +1,2 @@
+export const UPDATE_ALL_SWATCHES = 'UPDATE_ALL_SWATCHES';
 export const SWATCH = 'SWATCH';

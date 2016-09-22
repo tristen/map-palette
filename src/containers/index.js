@@ -23,17 +23,26 @@ class App extends Component {
   }
 
   upload(ev) {
-    const { addSwatch } = this.props;
+    const { updateAllSwatches } = this.props;
 
     const file = ev.currentTarget ? ev.currentTarget.files[0] : ev;
+
     const reader = new FileReader;
     reader.onload = (e) => {
-      Vibrant.from(e.target.result).getPalette((err, swatches) => {
-        for (const swatch in swatches) {
-          if (swatches.hasOwnProperty(swatch) && swatches[swatch]) {
-            addSwatch(swatch, swatches[swatch].getHex());
+      Vibrant.from(e.target.result).getPalette((err, d) => {
+        if (!d) return;
+
+
+        // console.log(err);
+        //if (err) return window.alert('Filetype is unsupported');
+        const swatches = {};
+        for (const swatch in d) {
+          if (d.hasOwnProperty(swatch) && d[swatch]) {
+            swatches[swatch] = d[swatch].getHex();
           }
         }
+
+        updateAllSwatches(swatches);
       });
     };
 
@@ -54,7 +63,7 @@ class App extends Component {
   }
 
   render() {
-    const { addSwatch, swatches, manual, style } = this.props;
+    const { swatches, manual, style } = this.props;
 
     return (
       <DragDrop upload={this.upload}>

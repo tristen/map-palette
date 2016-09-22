@@ -45,7 +45,7 @@ export default class Palette extends Component {
       <div className='swatch contain'>
         {hovertip && <div className='tooltip'>
           {value}
-          <small>{label}</small>
+          <small>Click to change</small>
         </div>}
 
         <div>

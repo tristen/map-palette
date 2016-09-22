@@ -9,3 +9,10 @@ export function addSwatch(prop, hex) {
     hex
   };
 }
+
+export function updateAllSwatches(swatches) {
+  return {
+    type: types.UPDATE_ALL_SWATCHES,
+    swatches
+  };
+}

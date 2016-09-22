@@ -4,7 +4,7 @@ import { NativeTypes } from 'react-dnd-html5-backend';
 
 const fileTarget = {
   drop: (props, monitor, component) => {
-    const { addSwatch, upload } = component.props;
+    const { upload } = component.props;
     const file = monitor.getItem().files[0];
     upload(file);
   }

@@ -4,8 +4,7 @@
   "main": "index.js",
   "browserify": {
     "transform": [
-      "babelify",
-      "brfs"
+      "babelify"
     ]
   },
   "scripts": {
@@ -30,7 +29,6 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babelify": "^7.3.0",
-    "brfs": "^1.4.3",
     "browserify": "^13.1.0",
     "budo": "^9.2.0",
     "eslint": "^3.5.0",
