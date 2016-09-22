@@ -34,11 +34,6 @@ const initialState = {
 const data = (state = initialState, action) => {
   switch (action.type) {
 
-    case types.LOADING:
-      return Object.assign({}, state, {
-      loading: action.loading
-    });
-
     case types.SWATCH:
       return Object.assign({}, state, {
       style: deepMap(state.style, (p, v) => {
