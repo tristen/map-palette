@@ -7,6 +7,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import { saveAs } from 'filesaver.js';
 import * as actions from '../actions';
+import Vibrant from 'node-vibrant';
 
 // Components
 import Map from '../components/map';
@@ -17,7 +18,26 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.download = this.download.bind(this);
+    this.upload = this.upload.bind(this);
     this.manual = this.manual.bind(this);
+  }
+
+  upload(ev) {
+    const { addSwatch } = this.props;
+
+    const file = ev.currentTarget ? ev.currentTarget.files[0] : ev;
+    const reader = new FileReader;
+    reader.onload = (e) => {
+      Vibrant.from(e.target.result).getPalette((err, swatches) => {
+        for (const swatch in swatches) {
+          if (swatches.hasOwnProperty(swatch) && swatches[swatch]) {
+            addSwatch(swatch, swatches[swatch].getHex());
+          }
+        }
+      });
+    };
+
+    reader.readAsDataURL(file);
   }
 
   download() {
@@ -34,18 +54,22 @@ class App extends Component {
   }
 
   render() {
-    const { addSwatch, swatches, style } = this.props;
+    const { addSwatch, swatches, manual, style } = this.props;
 
     return (
-      <DragDrop addSwatch={addSwatch}>
+      <DragDrop upload={this.upload}>
         <div className={`pin-topright pin-bottomright col12`}>
           <Map style={style} />
           <header className='pin-topleft z10 pad1'>
             <div className='lifted round'>
               <div className='clearfix pad2'>
                 <h3 className='space-bottom1'>Map palette</h3>
-                <p>Drag and drop or <a href='#' onClick={this.manual}>select</a> an image or adjust the swatches to change the color of the map.</p>
-                <input ref='manual' className='hidden' type='file' />
+                <p>Drag &amp; drop, <a href='#' onClick={this.manual}>select</a> an image, or adjust the boxes below to change the color of the map.</p>
+                <input
+                  ref='manual'
+                  className='hidden'
+                  onChange={this.upload}
+                  type='file' />
               </div>
               <button
                 onClick={this.download}

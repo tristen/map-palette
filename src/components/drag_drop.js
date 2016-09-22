@@ -1,24 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { DropTarget } from 'react-dnd';
-import Vibrant from 'node-vibrant';
 import { NativeTypes } from 'react-dnd-html5-backend';
 
 const fileTarget = {
   drop: (props, monitor, component) => {
-    const { addSwatch } = component.props;
+    const { addSwatch, upload } = component.props;
     const file = monitor.getItem().files[0];
-    const reader = new FileReader;
-    reader.onload = (e) => { 
-      Vibrant.from(e.target.result).getPalette((err, swatches) => {
-        for (const swatch in swatches) {
-          if (swatches.hasOwnProperty(swatch) && swatches[swatch]) {
-            addSwatch(swatch, swatches[swatch].getHex());
-          }
-        }
-      });
-    };
-
-    reader.readAsDataURL(file);
+    upload(file);
   }
 };
 
@@ -37,7 +25,7 @@ class DragDrop extends Component {
 }
 
 DragDrop.propTypes = {
-  addSwatch: PropTypes.func.isRequired,
+  upload: PropTypes.func.isRequired,
   connectDropTarget: PropTypes.func.isRequired,
   isOver: PropTypes.bool.isRequired
 };
