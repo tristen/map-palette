@@ -46,28 +46,21 @@ class App extends Component {
 
   upload(ev) {
     const { updateAllSwatches } = this.props;
-
     const file = ev.currentTarget ? ev.currentTarget.files[0] : ev;
-
     const reader = new FileReader;
     reader.onload = (e) => {
       Vibrant.from(e.target.result).getPalette((err, d) => {
         if (!d) return;
-
-
-        // console.log(err);
-        //if (err) return window.alert('Filetype is unsupported');
+        if (err) return window.alert('Filetype is unsupported');
         const swatches = {};
         for (const swatch in d) {
           if (d.hasOwnProperty(swatch) && d[swatch]) {
             swatches[swatch] = d[swatch].getHex();
           }
         }
-
         updateAllSwatches(swatches);
       });
     };
-
     reader.readAsDataURL(file);
   }
 
@@ -91,6 +84,7 @@ class App extends Component {
       style,
       picker,
       updateSwatch,
+      updateAllSwatches,
       toggleColorPicker
     } = this.props;
 
@@ -124,6 +118,7 @@ class App extends Component {
               <Palette
                 picker={picker}
                 toggleColorPicker={toggleColorPicker}
+                updateAllSwatches={updateAllSwatches}
                 updateSwatch={updateSwatch}
                 swatches={swatches} />
             </div>

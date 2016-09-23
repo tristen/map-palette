@@ -36,6 +36,11 @@ header {
   z-index:100;
   top:0;left:0;bottom:0;
   }
+.palette {
+  background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTAgMTAiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTEwNDIuMzYyMikiPjxyZWN0IHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgeD0iMCIgeT0iMTA0Mi40IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0ibTAgMTA0Mi40IDAgNSA1IDAgMC01LTUgMHptNSA1IDAgNSA1IDAgMC01LTUgMHoiIGZpbGw9IiNlNWU1ZTUiLz48L2c+PC9zdmc+);
+  background-repeat:all;
+  background-position:0 0;
+  }
 
 button.unstyled {
   font:bold 12px/20px 'Helvetica neue', Helvetica, sans-serif;
@@ -70,7 +75,7 @@ button.unstyled {
     display:block;
     border-left:5px solid transparent;
     border-right:5px solid transparent;
-    border-top:5px solid #b8b8b8;
+    border-top:5px solid #F0F0F0;
     display:block;
     position:absolute;
     bottom:-5px;
