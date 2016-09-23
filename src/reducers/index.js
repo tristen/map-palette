@@ -1,7 +1,7 @@
 'use strict';
 
 import * as types from '../constants/action_types';
-import { deepMap } from '../utils';
+import { deepMap } from '../utils/';
 import defaultStyle from '../data/default_style';
 
 // Colors based on those found in the default style.

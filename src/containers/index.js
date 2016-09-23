@@ -3,8 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContext } from 'react-dnd';
+import getDragDropContext from '../utils/dnd_context';
 import { saveAs } from 'filesaver.js';
 import * as actions from '../actions';
 import Vibrant from 'node-vibrant';
@@ -20,6 +19,12 @@ class App extends Component {
     this.download = this.download.bind(this);
     this.upload = this.upload.bind(this);
     this.manual = this.manual.bind(this);
+  }
+
+  getChildContext() {
+    return {
+      dragDropManager: getDragDropContext(this.context)
+    };
   }
 
   componentWillMount() {
@@ -138,5 +143,12 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
-App = DragDropContext(HTML5Backend)(App);
+App.childContextTypes = {
+  dragDropManager: React.PropTypes.object.isRequired
+};
+
+App.contextTypes = {
+  dragDropManager: React.PropTypes.object
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(App);

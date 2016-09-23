@@ -1,35 +1,38 @@
 import React, { Component, PropTypes } from 'react';
-import Dragula from 'react-dragula';
 import Swatch from './swatch';
+import getDragDropContext from '../utils/dnd_context';
 
 export default class Palette extends Component {
   constructor(props) {
     super(props);
+    this.moveSwatch = this.moveSwatch.bind(this);
   }
 
-  componentDidMount() {
-    const { updateAllSwatches, swatches } = this.props;
-    Dragula([this.refs.container], {
-      moves: (el, container, handle) => {
-        return handle.classList.contains('swatch-control');
+  getChildContext() {
+    return {
+      dragDropManager: getDragDropContext(this.context)
+    };
+  }
+
+  moveSwatch(dragIndex, hoverIndex) {
+
+    console.log('drag index', dragIndex, 'hover index', hoverIndex);
+
+    const { swatches } = this.props;
+    const dragSwatch = swatches[dragIndex];
+
+    // UPDATE THE COLLECTION!
+
+    /*
+    this.setState(update(this.state, {
+      cards: {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, dragSwatch]
+        ]
       }
-    }).on('drop', (el, target, source, sibling) => {
-      console.log('el', el, 'target', target, 'source', source, 'sibling', sibling);
-      return;
-
-      // This isn't great. there must be a better way.
-      const obj = {};
-      const swatchElements = this.refs.container.querySelectorAll('.swatch-control');
-      Object.keys(swatches).forEach((d, i) => {
-
-        console.log('i', i, 'el', swatchElements[i]);
-
-        obj[d] = swatchElements[i].textContent;
-      });
-
-      console.log(obj);
-      updateAllSwatches(obj);
-    });
+    }));
+    */
   }
 
   render() {
@@ -46,9 +49,11 @@ export default class Palette extends Component {
     function renderSwatch(d, i)  {
       return (
         <Swatch
-          key={i}
+          key={d.label}
+          index={i}
           toggleColorPicker={toggleColorPicker}
           updateSwatch={updateSwatch}
+          moveSwatch={this.moveSwatch}
           picker={picker}
           label={d.label}
           value={d.value} />
@@ -64,6 +69,14 @@ export default class Palette extends Component {
     );
   }
 }
+
+Palette.childContextTypes = {
+  dragDropManager: React.PropTypes.object.isRequired
+};
+
+Palette.contextTypes = {
+  dragDropManager: React.PropTypes.object
+};
 
 Palette.propTypes = {
   picker: React.PropTypes.oneOfType([
