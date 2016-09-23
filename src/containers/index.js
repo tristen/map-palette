@@ -101,7 +101,7 @@ class App extends Component {
             toggleColorPicker={toggleColorPicker}
             style={style} />
           <header className='pin-topleft z10 pad1'>
-            <div className='lifted round'>
+            <div className='lifted keyline-stroke round'>
               <div className='clearfix pad2'>
                 <h3 className='space-bottom1'>Map palette</h3>
                 <p>Drag &amp; drop, <a href='#' onClick={this.manual}>select</a> an image, or adjust the boxes below to change the color of the map.</p>
