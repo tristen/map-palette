@@ -6,6 +6,7 @@ import defaultStyle from '../data/default_style';
 
 // Colors based on those found in the default style.
 const initialState = {
+  picker: false,
   style: defaultStyle,
   swatches: {
     Vibrant: '#fff',
@@ -42,6 +43,12 @@ const data = (state = initialState, action) => {
       })
     });
 
+    case types.TOGGLE_COLORPICKER:
+      return Object.assign({}, state, {
+        picker: action.picker
+      })
+
+    case types.SWATCH:
     default:
       return state;
   }

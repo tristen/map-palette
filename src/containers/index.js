@@ -22,6 +22,28 @@ class App extends Component {
     this.manual = this.manual.bind(this);
   }
 
+  componentWillMount() {
+    this.onKeyDown = this.onKeyDown.bind(this);
+    document.addEventListener('keydown', this.onKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onKeyDown);
+  }
+
+  onKeyDown(e) {
+    const { toggleColorPicker } = this.props;
+
+    switch (e.which) {
+      case 27: // ESC
+        toggleColorPicker(false);
+      break;
+      default:
+        return;
+      break;
+    }
+  }
+
   upload(ev) {
     const { updateAllSwatches } = this.props;
 
@@ -63,12 +85,21 @@ class App extends Component {
   }
 
   render() {
-    const { swatches, manual, style, updateSwatch } = this.props;
+    const {
+      swatches,
+      manual,
+      style,
+      picker,
+      updateSwatch,
+      toggleColorPicker
+    } = this.props;
 
     return (
       <DragDrop upload={this.upload}>
         <div className={`pin-topright pin-bottomright col12`}>
-          <Map style={style} />
+          <Map
+            toggleColorPicker={toggleColorPicker}
+            style={style} />
           <header className='pin-topleft z10 pad1'>
             <div className='lifted round'>
               <div className='clearfix pad2'>
@@ -91,6 +122,8 @@ class App extends Component {
           <div className='pin-bottom space-bottom2 z1 col6 margin3'>
             <div className='fill-white contain'>
               <Palette
+                picker={picker}
+                toggleColorPicker={toggleColorPicker}
                 updateSwatch={updateSwatch}
                 swatches={swatches} />
             </div>

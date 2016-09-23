@@ -7,7 +7,7 @@ export default class Palette extends Component {
   }
 
   render() {
-    const { updateSwatch } = this.props;
+    const { updateSwatch, toggleColorPicker, picker } = this.props;
     const swatches = [];
     for (let prop in this.props.swatches) {
       swatches.push({
@@ -20,7 +20,9 @@ export default class Palette extends Component {
       return (
         <div key={i} className='col2'>
           <Swatch
+            toggleColorPicker={toggleColorPicker}
             updateSwatch={updateSwatch}
+            picker={picker}
             label={d.label}
             value={d.value} />
         </div> 
@@ -36,6 +38,11 @@ export default class Palette extends Component {
 }
 
 Palette.propTypes = {
+  picker: React.PropTypes.oneOfType([
+    React.PropTypes.bool,
+    React.PropTypes.string
+  ]),
+  toggleColorPicker: PropTypes.func.isRequired,
   updateSwatch: PropTypes.func.isRequired,
   swatches: PropTypes.object.isRequired
 };

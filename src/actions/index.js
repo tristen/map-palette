@@ -16,3 +16,10 @@ export function updateAllSwatches(swatches) {
     swatches
   };
 }
+
+export function toggleColorPicker(picker) {
+  return {
+    type: types.TOGGLE_COLORPICKER,
+    picker
+  };
+}

@@ -6,12 +6,11 @@ export default class Palette extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      colorpicker: false,
       hovertip: false
     };
 
     this.onPickerChange = debounce(this.onPickerChange.bind(this), 100);
-    this.toggleColorpicker = this.toggleColorpicker.bind(this);
+    this.toggleColorPicker = this.toggleColorPicker.bind(this);
     this.toggleHovertip = this.toggleHovertip.bind(this);
   }
 
@@ -20,8 +19,9 @@ export default class Palette extends Component {
     this.props.updateSwatch(label, '#' + e.hex);
   }
 
-  toggleColorpicker() {
-    this.setState({ colorpicker: !this.state.colorpicker });
+  toggleColorPicker() {
+    const { toggleColorPicker, picker, label } = this.props;
+    toggleColorPicker(picker === label ? false : label);
   }
 
   toggleHovertip() {
@@ -29,8 +29,9 @@ export default class Palette extends Component {
   }
 
   render() {
-    const { label, value } = this.props;
-    const { colorpicker, hovertip } = this.state;
+    const { label, value, picker, toggleColorPicker } = this.props;
+    const { hovertip } = this.state;
+    const active = label === picker ? 'active' : '';
 
     return (
       <div className='swatch contain'>
@@ -43,11 +44,11 @@ export default class Palette extends Component {
           <button
             onMouseEnter={this.toggleHovertip}
             onMouseLeave={this.toggleHovertip}
-            onClick={this.toggleColorpicker}
+            onClick={this.toggleColorPicker}
             style={{backgroundColor: value}}
-            className='unstyled' />
+            className={`unstyled ${active}`} />
         </div>
-        {colorpicker && <ColorPicker
+        {active && <ColorPicker
           onChange={this.onPickerChange.bind(this)}
           value={value}
         />}
@@ -59,5 +60,10 @@ export default class Palette extends Component {
 Palette.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  picker: React.PropTypes.oneOfType([
+    React.PropTypes.bool,
+    React.PropTypes.string
+  ]),
+  toggleColorPicker: PropTypes.func.isRequired,
   updateSwatch: PropTypes.func.isRequired
 };

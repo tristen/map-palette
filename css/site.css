@@ -41,6 +41,14 @@ button.unstyled {
   border-radius:0;
   width:100%;
   }
+  button.unstyled:focus {
+  -webkit-box-shadow:none;
+          box-shadow:none;
+  }
+  button.unstyled.active {
+  -webkit-box-shadow:inset 0 0 0 3px rgba(0,0,0,0.1);
+          box-shadow:inset 0 0 0 3px rgba(0,0,0,0.1);
+  }
 
 .tooltip {
   font-size:12px;

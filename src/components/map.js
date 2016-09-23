@@ -11,7 +11,7 @@ export default class Map extends Component {
   }
 
   componentDidMount() {
-    const { style } = this.props;
+    const { style, toggleColorPicker } = this.props;
 
     this.map = new mapboxgl.Map({
       container: this.refs.map,
@@ -23,10 +23,18 @@ export default class Map extends Component {
 
     this.map.addControl(new mapboxgl.Navigation());
     this.map.addControl(new mapboxgl.Geolocate());
+
+    this.map.on('click', (e) => {
+      toggleColorPicker(false);
+    });
   }
 
   componentWillReceiveProps(next) {
-    this.map.setStyle(next.style);
+
+    // Compare these strings before updating.
+    if (JSON.stringify(this.props.style) !== JSON.stringify(next.style)) {
+      this.map.setStyle(next.style);
+    }
   }
 
   render() {
@@ -37,5 +45,6 @@ export default class Map extends Component {
 }
 
 Map.propTypes = {
+  toggleColorPicker: PropTypes.func.isRequired,
   style: PropTypes.object.isRequired
 };
