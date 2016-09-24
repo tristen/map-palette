@@ -8,13 +8,16 @@ import { DragSource, DropTarget } from 'react-dnd';
 const swatchSource = {
   beginDrag(props) {
     return {
-      index: props.index
+      index: props.index,
+      label: props.label,
+      value: props.value
     };
   }
 };
 
 const swatchTarget = {
   hover(props, monitor, component) {
+
     const dragIndex = monitor.getItem().index;
     const hoverIndex = props.index;
 
@@ -48,7 +51,10 @@ const swatchTarget = {
     }
 
     // Time to actually perform the action
-    props.moveSwatch(dragIndex, hoverIndex);
+    props.moveSwatch({
+      [monitor.getItem().label]: props.value,
+      [props.label]: monitor.getItem().value
+    });
 
     // Note: we're mutating the monitor item here!
     // Generally it's better to avoid mutations,
@@ -111,10 +117,13 @@ class Swatch extends Component {
     } = this.props;
 
     // TODO do something with `isDragging`
+    const opacity = isDragging ? 0 : 1;
     const active = label === picker ? 'active' : '';
 
     return connectDragSource(connectDropTarget(
-      <div className='swatch col2 contain'>
+      <div
+        style={{opacity}}
+        className='swatch col2 contain'>
         <div>
           <button
             onMouseEnter={this.toggleHovertip}

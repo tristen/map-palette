@@ -14,25 +14,11 @@ export default class Palette extends Component {
     };
   }
 
-  moveSwatch(dragIndex, hoverIndex) {
-
-    console.log('drag index', dragIndex, 'hover index', hoverIndex);
-
-    const { swatches } = this.props;
-    const dragSwatch = swatches[dragIndex];
-
-    // UPDATE THE COLLECTION!
-
-    /*
-    this.setState(update(this.state, {
-      cards: {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, dragSwatch]
-        ]
-      }
-    }));
-    */
+  moveSwatch(obj) {
+    const { swatches, updateAllSwatches } = this.props;
+    console.log('prev', swatches);
+    console.log('next', Object.assign({}, swatches, obj));
+    updateAllSwatches(Object.assign({}, swatches, obj));
   }
 
   render() {
