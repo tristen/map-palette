@@ -9,7 +9,6 @@ const swatchSource = {
   beginDrag(props) {
     return {
       index: props.index,
-      label: props.label,
       value: props.value
     };
   }
@@ -52,8 +51,8 @@ const swatchTarget = {
 
     // Time to actually perform the action
     props.moveSwatch({
-      [monitor.getItem().label]: props.value,
-      [props.label]: monitor.getItem().value
+      [monitor.getItem().index]: props.value,
+      [props.index]: monitor.getItem().value
     });
 
     // Note: we're mutating the monitor item here!
@@ -82,7 +81,7 @@ class Swatch extends Component {
     value: PropTypes.string.isRequired,
     picker: React.PropTypes.oneOfType([
       React.PropTypes.bool,
-      React.PropTypes.string
+      React.PropTypes.number
     ]),
     toggleColorPicker: PropTypes.func.isRequired,
     updateSwatch: PropTypes.func.isRequired
@@ -115,7 +114,6 @@ class Swatch extends Component {
       connectDropTarget
     } = this.props;
 
-    // TODO do something with `isDragging`
     const opacity = isDragging ? 0 : 1;
     const active = index === picker ? 'active' : '';
 

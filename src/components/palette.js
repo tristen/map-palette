@@ -16,9 +16,11 @@ export default class Palette extends Component {
 
   moveSwatch(obj) {
     const { swatches, updateAllSwatches } = this.props;
-    console.log('prev', swatches);
-    console.log('next', Object.assign({}, swatches, obj));
-    updateAllSwatches(Object.assign({}, swatches, obj));
+    console.log('prev:', swatches);
+    console.log('next:', obj);
+
+    for (let prop in obj) swatches[prop] = obj[prop];
+    updateAllSwatches(swatches);
   }
 
   render() {
