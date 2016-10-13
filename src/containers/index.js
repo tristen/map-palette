@@ -6,7 +6,9 @@ import { bindActionCreators } from 'redux';
 import getDragDropContext from '../utils/dnd_context';
 import { saveAs } from 'filesaver.js';
 import * as actions from '../actions';
-import Vibrant from 'node-vibrant';
+import getPixels from 'get-pixels';
+import getRGBAPalette from 'get-rgba-palette';
+import tinyColor from 'tinycolor2';
 
 // Components
 import Map from '../components/map';
@@ -49,22 +51,33 @@ class App extends Component {
     }
   }
 
+  valid(f) {
+    const filename = f.name ? f.name.toLowerCase() : '';
+    function ext(_) {
+      return filename.indexOf(_) !== -1;
+    }
+
+    return f.type === 'image/png' ||
+      f.type === 'image/gif' ||
+      f.type === 'image/jpeg' ||
+      ext('.gif') ||
+      ext('.jpeg') ||
+      ext('.png');
+  }
+
   upload(ev) {
     const { updateAllSwatches } = this.props;
     const file = ev.currentTarget ? ev.currentTarget.files[0] : ev;
+    if (!this.valid(file)) return window.alert('Filetype is unsupported');
     const reader = new FileReader;
     reader.onload = (e) => {
-      Vibrant.from(e.target.result).getPalette((err, d) => {
-        if (!d) return;
-        if (err) return window.alert('Filetype is unsupported');
-        const swatches = {};
-        for (const swatch in d) {
-          if (d.hasOwnProperty(swatch) && d[swatch]) {
-            swatches[swatch] = d[swatch].getHex();
-          }
-        }
+      getPixels(e.target.result, ((err, d) => {
+        if (err) return window.alert('Pixels could not be pulled from image');
+        const swatches = getRGBAPalette(d.data, 6, 3).map((rgb) => {
+          return tinyColor('rgb(' + rgb.join() + ')').toHexString();
+        });
         updateAllSwatches(swatches);
-      });
+      }));
     };
     reader.readAsDataURL(file);
   }

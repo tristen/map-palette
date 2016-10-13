@@ -3,7 +3,6 @@
 /* global mapboxgl */
 
 import React, { Component, PropTypes } from 'react';
-import tinyColor from 'tinycolor2';
 
 export default class Map extends Component {
   constructor(props) {

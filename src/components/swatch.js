@@ -79,7 +79,6 @@ class Swatch extends Component {
     index: PropTypes.number.isRequired,
     isDragging: PropTypes.bool.isRequired,
     moveSwatch: PropTypes.func.isRequired,
-    label: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     picker: React.PropTypes.oneOfType([
       React.PropTypes.bool,
@@ -96,18 +95,18 @@ class Swatch extends Component {
   }
 
   onPickerChange(e) {
-    const { updateSwatch, label } = this.props;
-    this.props.updateSwatch(label, '#' + e.hex);
+    const { updateSwatch, index } = this.props;
+    this.props.updateSwatch(index, '#' + e.hex);
   }
 
   toggleColorPicker() {
-    const { toggleColorPicker, picker, label } = this.props;
-    toggleColorPicker(picker === label ? false : label);
+    const { toggleColorPicker, picker, index } = this.props;
+    toggleColorPicker(picker === index ? false : index);
   }
 
   render() {
     const { 
-      label,
+      index,
       value,
       picker,
       toggleColorPicker,
@@ -118,7 +117,7 @@ class Swatch extends Component {
 
     // TODO do something with `isDragging`
     const opacity = isDragging ? 0 : 1;
-    const active = label === picker ? 'active' : '';
+    const active = index === picker ? 'active' : '';
 
     return connectDragSource(connectDropTarget(
       <div

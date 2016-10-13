@@ -8,14 +8,14 @@ import defaultStyle from '../data/default_style';
 const initialState = {
   picker: false,
   style: defaultStyle,
-  swatches: {
-    Vibrant: '#fff',
-    Muted: '#cbd3d4',
-    DarkVibrant: '#e8edeb',
-    DarkMuted: '#f0f5f3',
-    LightVibrant: '#dee2e3',
-    LightMuted: '#78888a'
-  }
+  swatches: [
+    '#fff',
+    '#cbd3d4',
+    '#e8edeb',
+    '#f0f5f3',
+    '#dee2e3',
+    '#78888a'
+  ]
 };
 
 const data = (state = initialState, action) => {
@@ -24,31 +24,30 @@ const data = (state = initialState, action) => {
     case types.UPDATE_ALL_SWATCHES:
       return Object.assign({}, state, {
       style: deepMap(state.style, (v) => {
-        for (let prop in action.swatches) {
-          if (v === state.swatches[prop]) v = action.swatches[prop];
-        }
+        state.swatches.forEach((d, i) => {
+          if (v === d) v = action.swatches[i];
+        });
+
         return v;
       }),
-      swatches: Object.assign({}, state.swatches, action.swatches)
+      swatches: action.swatches
     });
 
     case types.SWATCH:
+      state.swatches[action.index] = action.hex;
       return Object.assign({}, state, {
       style: deepMap(state.style, (v) => {
-        if (v === state.swatches[action.prop]) v = `${action.hex}`;
+        if (v === state.swatches[action.index]) v = `${action.hex}`;
         return v;
       }),
-      swatches: Object.assign({}, state.swatches, {
-        [action.prop]: action.hex
-      })
+      swatches: state.swatches
     });
 
     case types.TOGGLE_COLORPICKER:
       return Object.assign({}, state, {
-        picker: action.picker
+        picker: action.index
       })
 
-    case types.SWATCH:
     default:
       return state;
   }

@@ -2,10 +2,10 @@
 
 import * as types from '../constants/action_types';
 
-export function updateSwatch(prop, hex) {
+export function updateSwatch(index, hex) {
   return {
     type: types.SWATCH,
-    prop,
+    index,
     hex
   };
 }
@@ -17,9 +17,9 @@ export function updateAllSwatches(swatches) {
   };
 }
 
-export function toggleColorPicker(picker) {
+export function toggleColorPicker(index) {
   return {
     type: types.TOGGLE_COLORPICKER,
-    picker
+    index
   };
 }

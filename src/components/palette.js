@@ -22,27 +22,20 @@ export default class Palette extends Component {
   }
 
   render() {
-    const { updateSwatch, toggleColorPicker, picker } = this.props;
+    const { updateSwatch, toggleColorPicker, picker, swatches } = this.props;
 
-    const swatches = [];
-    for (let prop in this.props.swatches) {
-      swatches.push({
-        label: prop,
-        value: this.props.swatches[prop]
-      });
-    }
+    console.log('swatched from paltte', swatches);
 
     function renderSwatch(d, i)  {
       return (
         <Swatch
-          key={d.label}
+          key={d}
           index={i}
           toggleColorPicker={toggleColorPicker}
           updateSwatch={updateSwatch}
           moveSwatch={this.moveSwatch}
           picker={picker}
-          label={d.label}
-          value={d.value} />
+          value={d} />
       );
     }
 
@@ -67,10 +60,10 @@ Palette.contextTypes = {
 Palette.propTypes = {
   picker: React.PropTypes.oneOfType([
     React.PropTypes.bool,
-    React.PropTypes.string
+    React.PropTypes.number
   ]),
   toggleColorPicker: PropTypes.func.isRequired,
   updateSwatch: PropTypes.func.isRequired,
   updateAllSwatches: PropTypes.func.isRequired,
-  swatches: PropTypes.object.isRequired
+  swatches: PropTypes.array.isRequired
 };
