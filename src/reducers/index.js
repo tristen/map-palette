@@ -10,10 +10,10 @@ const initialState = {
   style: defaultStyle,
   swatches: [
     '#fff',
-    '#cbd3d4',
-    '#e8edeb',
     '#f0f5f3',
+    '#e8edeb',
     '#dee2e3',
+    '#cbd3d4',
     '#78888a'
   ]
 };

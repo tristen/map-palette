@@ -73,9 +73,24 @@ class App extends Component {
     reader.onload = (e) => {
       getPixels(e.target.result, ((err, d) => {
         if (err) return window.alert('Pixels could not be pulled from image');
+
+        // Sort colors from light to dark.
+        // 1. Convert to HSV
+        // 2. Sort on H, S, V independently
+        // 3. Return an array of Hex values
+
         const swatches = getRGBAPalette(d.data, 6, 3).map((rgb) => {
-          return tinyColor('rgb(' + rgb.join() + ')').toHexString();
+          return tinyColor('rgb(' + rgb.join() + ')');
+        }).sort((a, b) => {
+          return a.toHsv().h < b.toHsv().h; // Sort on Saturation
+        }).sort((a, b) => {
+          return a.toHsv().s < b.toHsv().s; // Sort on Saturation
+        }).sort((a, b) => {
+          return a.toHsv().v < b.toHsv().v; // Sort on Saturation
+        }).map((d) => {
+          return d.toHexString();
         });
+
         updateAllSwatches(swatches);
       }));
     };
