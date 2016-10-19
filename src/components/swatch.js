@@ -7,6 +7,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 
 const swatchSource = {
   beginDrag(props) {
+    if (props.picker === props.index) props.toggleColorPicker(false);
     return {
       index: props.index,
       value: props.value
@@ -120,7 +121,7 @@ class Swatch extends Component {
     return connectDragSource(connectDropTarget(
       <div
         style={{opacity}}
-        className='swatch col2 contain truncate'>
+        className='swatch col2 contain'>
         <div>
           <button
             onMouseEnter={this.toggleHovertip}
