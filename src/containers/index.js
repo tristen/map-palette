@@ -9,7 +9,6 @@ import * as actions from '../actions';
 import getPixels from 'get-pixels';
 import getRGBAPalette from 'get-rgba-palette';
 import tinyColor from 'tinycolor2';
-import { List } from 'immutable';
 
 // Components
 import Map from '../components/map';
@@ -165,7 +164,7 @@ class App extends Component {
             </div>
 
             <button
-              onClick={reverseSwatches.bind(this, List(swatches).reverse().toArray())}
+              onClick={reverseSwatches.bind(this, swatches.slice(0).reverse())}
               className='pin-right fill-darken z1 icon reverse space-right2 dot map-control'
             />
           </div>
