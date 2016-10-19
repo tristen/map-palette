@@ -98,3 +98,9 @@ button.unstyled {
   .map-control:hover {
     background-color:rgba(0,0,0,0.75);
     }
+
+/* Hack to hide the Alpha controls in react-colorpickr */
+.cp-col:last-child .cp-fill-tile,
+.cp-col:last-child .cp-inputs .cp-relative {
+  display:none;
+  }

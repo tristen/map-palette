@@ -6,8 +6,11 @@ import ItemTypes from '../constants/item_types';
 import { DragSource, DropTarget } from 'react-dnd';
 
 const swatchSource = {
+  canDrag(props) {
+    return props.picker !== props.index;
+  },
+
   beginDrag(props) {
-    if (props.picker === props.index) props.toggleColorPicker(false);
     return {
       index: props.index,
       value: props.value
@@ -17,7 +20,6 @@ const swatchSource = {
 
 const swatchTarget = {
   hover(props, monitor, component) {
-
     const dragIndex = monitor.getItem().index;
     const hoverIndex = props.index;
 
