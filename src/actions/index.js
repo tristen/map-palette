@@ -23,3 +23,10 @@ export function toggleColorPicker(index) {
     index
   };
 }
+
+export function reverseSwatches(swatches) {
+  return {
+    type: types.UPDATE_ALL_SWATCHES,
+    swatches
+  };
+}

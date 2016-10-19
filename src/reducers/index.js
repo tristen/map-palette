@@ -1,7 +1,7 @@
 'use strict';
 
 import * as types from '../constants/action_types';
-import { deepMap } from '../utils/';
+import traverse from 'traverse';
 import defaultStyle from '../data/default_style';
 
 // Colors based on those found in the default style.
@@ -23,24 +23,22 @@ const data = (state = initialState, action) => {
 
     case types.UPDATE_ALL_SWATCHES:
       return Object.assign({}, state, {
-      style: deepMap(state.style, (v) => {
-        state.swatches.forEach((d, i) => {
-          if (v === d) v = action.swatches[i];
-        });
-
-        return v;
-      }),
-      swatches: action.swatches
+        style: traverse(state.style).map(function(d) {
+          state.swatches.forEach((swatch, i) => {
+            if (d === swatch) this.update(action.swatches[i]);
+          });
+        }),
+        swatches: action.swatches
     });
 
     case types.SWATCH:
-      state.swatches[action.index] = action.hex;
+      const swatches = state.swatches.slice(0);
+      swatches[action.index] = action.hex;
       return Object.assign({}, state, {
-      style: deepMap(state.style, (v) => {
-        if (v === state.swatches[action.index]) v = `${action.hex}`;
-        return v;
+      style: traverse(state.style).map(function(d) {
+        if (d === state.swatches[action.index]) this.update(action.hex);
       }),
-      swatches: state.swatches
+      swatches
     });
 
     case types.TOGGLE_COLORPICKER:

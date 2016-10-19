@@ -9,6 +9,7 @@ import * as actions from '../actions';
 import getPixels from 'get-pixels';
 import getRGBAPalette from 'get-rgba-palette';
 import tinyColor from 'tinycolor2';
+import { List } from 'immutable';
 
 // Components
 import Map from '../components/map';
@@ -21,6 +22,7 @@ class App extends Component {
     this.download = this.download.bind(this);
     this.upload = this.upload.bind(this);
     this.manual = this.manual.bind(this);
+    this.reverseSwatches = this.reverseSwatches.bind(this);
   }
 
   getChildContext() {
@@ -110,6 +112,11 @@ class App extends Component {
     this.refs.manual.dispatchEvent(event);
   }
 
+  reverseSwatches() {
+    const { swatches, reverseSwatches } = this.props;
+    reverseSwatches(swatches);
+  }
+
   render() {
     const {
       swatches,
@@ -118,6 +125,7 @@ class App extends Component {
       picker,
       updateSwatch,
       updateAllSwatches,
+      reverseSwatches,
       toggleColorPicker
     } = this.props;
 
@@ -146,7 +154,7 @@ class App extends Component {
             </div>
           </header>
 
-          <div className='pin-bottom space-bottom2 z1 col6 margin3'>
+          <div className='pin-bottom space-bottom4 z1 col8 margin2 pad8x'>
             <div className='fill-white contain'>
               <Palette
                 picker={picker}
@@ -155,6 +163,11 @@ class App extends Component {
                 updateSwatch={updateSwatch}
                 swatches={swatches} />
             </div>
+
+            <button
+              onClick={reverseSwatches.bind(this, List(swatches).reverse().toArray())}
+              className='pin-right fill-darken z1 icon reverse space-right2 dot map-control'
+            />
           </div>
 
         </div>

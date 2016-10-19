@@ -30,6 +30,9 @@ export default class Map extends Component {
 
   componentWillReceiveProps(next) {
 
+    console.log('past', this.props.style.layers[0].paint['background-color']);
+    console.log('present', next.style.layers[0].paint['background-color']);
+
     // Compare these strings before updating.
     if (JSON.stringify(this.props.style) !== JSON.stringify(next.style)) {
       this.map.setStyle(next.style);

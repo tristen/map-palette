@@ -38,6 +38,7 @@
     "filesaver.js": "^0.2.0",
     "get-pixels": "^3.3.0",
     "get-rgba-palette": "^2.0.0",
+    "immutable": "^3.8.1",
     "lodash.debounce": "^4.0.8",
     "react": "^15.3.2",
     "react-colorpickr": "^4.3.0",
@@ -46,6 +47,7 @@
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
-    "tinycolor2": "^1.4.1"
+    "tinycolor2": "^1.4.1",
+    "traverse": "^0.6.6"
   }
 }

@@ -120,7 +120,7 @@ class Swatch extends Component {
     return connectDragSource(connectDropTarget(
       <div
         style={{opacity}}
-        className='swatch col2 contain'>
+        className='swatch col2 contain truncate'>
         <div>
           <button
             onMouseEnter={this.toggleHovertip}
