@@ -60,10 +60,10 @@
         "mapbox:autocomposite": true
     },
     "center": [
-        -58.56264962529008,
-        -34.496140623518194
+        -73.99454015960063,
+        40.72437951755995
     ],
-    "zoom": 11.455607981600227,
+    "zoom": 12.53705976684822,
     "bearing": 0,
     "pitch": 0,
     "sources": {
@@ -872,7 +872,7 @@
             "paint": {
                 "fill-color": "#e8edeb",
                 "fill-antialias": true,
-                "fill-outline-color": "#dee2e3"
+                "fill-outline-color": "#f0f5f3"
             }
         },
         {
@@ -8936,7 +8936,7 @@
     ],
     "created": "2016-07-11T02:43:30.261Z",
     "id": "ciqhfcs1p000icanlouj6ulv1",
-    "modified": "2016-10-18T20:05:42.641Z",
+    "modified": "2016-10-20T15:09:54.257Z",
     "owner": "tristen",
     "draft": false
 }
