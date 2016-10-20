@@ -60,10 +60,10 @@
         "mapbox:autocomposite": true
     },
     "center": [
-        -73.99454015960063,
-        40.72437951755995
+        -73.99331768750073,
+        40.724117856225234
     ],
-    "zoom": 12.53705976684822,
+    "zoom": 13.81208507899312,
     "bearing": 0,
     "pitch": 0,
     "sources": {
@@ -292,7 +292,6 @@
                     ]
                 },
                 "fill-opacity": 1,
-                "fill-outline-color": "#dee2e3",
                 "fill-antialias": true
             }
         },
@@ -336,7 +335,6 @@
                     ]
                 },
                 "fill-opacity": 1,
-                "fill-outline-color": "#dee2e3",
                 "fill-antialias": true
             }
         },
@@ -582,7 +580,6 @@
                         ]
                     ]
                 },
-                "fill-outline-color": "#dee2e3",
                 "fill-antialias": true
             }
         },
@@ -1121,19 +1118,7 @@
                         ]
                     ]
                 },
-                "line-color": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            9,
-                            "#dee2e3"
-                        ],
-                        [
-                            11,
-                            "#e8edeb"
-                        ]
-                    ]
-                },
+                "line-color": "#cbd3d4",
                 "line-gap-width": {
                     "base": 1.5,
                     "stops": [
@@ -1194,7 +1179,7 @@
                         ]
                     ]
                 },
-                "line-color": "#dee2e3",
+                "line-color": "#cbd3d4",
                 "line-gap-width": {
                     "base": 1.5,
                     "stops": [
@@ -1272,7 +1257,7 @@
                         ]
                     ]
                 },
-                "line-color": "#dee2e3",
+                "line-color": "#cbd3d4",
                 "line-gap-width": {
                     "base": 1.5,
                     "stops": [
@@ -1742,20 +1727,8 @@
                         ]
                     ]
                 },
-                "line-color": "#dee2e3",
-                "line-opacity": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            13.99,
-                            0
-                        ],
-                        [
-                            14,
-                            1
-                        ]
-                    ]
-                },
+                "line-color": "#fff",
+                "line-opacity": 0.5,
                 "line-dasharray": {
                     "base": 1,
                     "stops": [
@@ -1875,20 +1848,8 @@
                         ]
                     ]
                 },
-                "line-color": "#dee2e3",
-                "line-opacity": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            14,
-                            0
-                        ],
-                        [
-                            14.25,
-                            1
-                        ]
-                    ]
-                }
+                "line-color": "#fff",
+                "line-opacity": 0.5
             }
         },
         {
@@ -1938,7 +1899,7 @@
                         ]
                     ]
                 },
-                "line-color": "#dee2e3",
+                "line-color": "#fff",
                 "line-dasharray": {
                     "base": 1,
                     "stops": [
@@ -1972,19 +1933,7 @@
                         ]
                     ]
                 },
-                "line-opacity": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            14,
-                            0
-                        ],
-                        [
-                            14.25,
-                            1
-                        ]
-                    ]
-                }
+                "line-opacity": 0.5
             }
         },
         {
@@ -2101,8 +2050,8 @@
                         ]
                     ]
                 },
-                "line-color": "#dee2e3",
-                "line-opacity": 1,
+                "line-color": "#fff",
+                "line-opacity": 0.5,
                 "line-dasharray": {
                     "base": 1,
                     "stops": [
@@ -2156,7 +2105,8 @@
                 "line-dasharray": [
                     1,
                     0
-                ]
+                ],
+                "line-opacity": 0.5
             }
         },
         {
@@ -2184,20 +2134,8 @@
                         ]
                     ]
                 },
-                "line-color": "#dee2e3",
-                "line-opacity": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            13.99,
-                            0
-                        ],
-                        [
-                            14,
-                            1
-                        ]
-                    ]
-                }
+                "line-color": "#fff",
+                "line-opacity": 0.5
             }
         },
         {
@@ -2225,20 +2163,8 @@
                         ]
                     ]
                 },
-                "line-color": "#dee2e3",
-                "line-opacity": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            13.99,
-                            0
-                        ],
-                        [
-                            14,
-                            1
-                        ]
-                    ]
-                }
+                "line-color": "#fff",
+                "line-opacity": 0.5
             }
         },
         {
@@ -2427,7 +2353,7 @@
                         ]
                     ]
                 },
-                "line-color": "#cbd3d4",
+                "line-color": "#e8edeb",
                 "line-gap-width": 0,
                 "line-opacity": {
                     "base": 1,
@@ -4197,23 +4123,23 @@
             },
             "paint": {
                 "line-color": "#cbd3d4",
-                "line-width": {
-                    "base": 1.5,
-                    "stops": [
-                        [
-                            14,
-                            0.75
-                        ],
-                        [
-                            20,
-                            1
-                        ]
-                    ]
-                },
                 "line-dasharray": [
                     2,
                     1
-                ]
+                ],
+                "line-width": {
+                    "base": 1.25,
+                    "stops": [
+                        [
+                            14,
+                            1
+                        ],
+                        [
+                            17,
+                            2.25
+                        ]
+                    ]
+                }
             }
         },
         {
@@ -8936,7 +8862,7 @@
     ],
     "created": "2016-07-11T02:43:30.261Z",
     "id": "ciqhfcs1p000icanlouj6ulv1",
-    "modified": "2016-10-20T15:09:54.257Z",
+    "modified": "2016-10-20T15:34:13.467Z",
     "owner": "tristen",
     "draft": false
 }
