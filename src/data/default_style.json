@@ -46,7 +46,7 @@
             },
             "f423319a6dab2ed463382f7e7edc5da1": {
                 "name": "Bridges",
-                "collapsed": true
+                "collapsed": false
             },
             "003e472752e5683c3f8ef9dee45b54a0": {
                 "name": "Misc",
@@ -60,10 +60,10 @@
         "mapbox:autocomposite": true
     },
     "center": [
-        -73.99331768750073,
-        40.724117856225234
+        -74.0063592834409,
+        40.71182345142515
     ],
-    "zoom": 13.81208507899312,
+    "zoom": 15.159886539208188,
     "bearing": 0,
     "pitch": 0,
     "sources": {
@@ -829,7 +829,7 @@
                         [
                             13,
                             [
-                                12,
+                                8,
                                 4
                             ]
                         ]
@@ -4119,10 +4119,11 @@
                 ]
             ],
             "layout": {
-                "line-join": "round"
+                "line-join": "round",
+                "visibility": "visible"
             },
             "paint": {
-                "line-color": "#cbd3d4",
+                "line-color": "#78888a",
                 "line-dasharray": [
                     2,
                     1
@@ -4137,6 +4138,19 @@
                         [
                             17,
                             2.25
+                        ]
+                    ]
+                },
+                "line-opacity": {
+                    "base": 1.25,
+                    "stops": [
+                        [
+                            14,
+                            0.25
+                        ],
+                        [
+                            17,
+                            1
                         ]
                     ]
                 }
@@ -5648,7 +5662,8 @@
                 ]
             ],
             "layout": {
-                "line-join": "round"
+                "line-join": "round",
+                "visibility": "visible"
             },
             "paint": {
                 "line-color": "#cbd3d4",
@@ -8862,7 +8877,7 @@
     ],
     "created": "2016-07-11T02:43:30.261Z",
     "id": "ciqhfcs1p000icanlouj6ulv1",
-    "modified": "2016-10-20T15:34:13.467Z",
+    "modified": "2016-10-20T16:06:23.958Z",
     "owner": "tristen",
     "draft": false
 }
