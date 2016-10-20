@@ -105,7 +105,7 @@ class Swatch extends Component {
             onMouseLeave={this.toggleHovertip}
             onClick={this.toggleColorPicker}
             style={{backgroundColor: value}}
-            className={`unstyled swatch-control ${active}`}>
+            className={`unstyled button swatch-control ${active}`}>
             {value}
           </button>
         </div>

@@ -138,10 +138,7 @@ a.quiet       { color:rgba(0,0,0,0.5);  }
 a.quiet.active, a.quiet:hover { color:rgba(0,0,0,0.75); }
 
 /* Buttons */
-button,
-.button,
-[type=button],
-[type=submit] {
+.button {
   background-color:#3887be;
   text-align:center;
   color:#fff;
@@ -165,45 +162,23 @@ button,
   -webkit-font-smoothing:antialiased;
   }
 
-button:hover,
 .button:hover,
-.button.active,
-[type=button]:hover,
-[type=submit]:hover {
+.button.active {
   color:#fff;
   }
 
-button:focus,
-.button:focus,
-[type=submit]:focus,
-[type=button]:focus {
-  -webkit-box-shadow: inset 0 0 0 3px rgba(0,0,0,0.1);
-  box-shadow: inset 0 0 0 3px rgba(0,0,0,0.1);
-}
+.button:focus {
+  -webkit-box-shadow:inset 0 0 0 3px rgba(0,0,0,0.1);
+          box-shadow:inset 0 0 0 3px rgba(0,0,0,0.1);
+  }
 
-button:hover,
 .button:hover,
-.button.active,
-[type=submit]:hover,
-[type=button]:hover {
+.button.active {
   background-color:#52a1d8;
-  }
-button.button-secondary,
-.button.button-secondary {
-  background-color:#8889cc;
-  }
-button.button-secondary:hover,
-.button.button-secondary.active,
-.button.button-secondary:hover {
-  background-color:#a4a4e5;
   }
 
 .button.disabled,
-.button:disabled,
-button.disabled,
-button:disabled,
-[type=submit]:disabled,
-[type=button]:disabled {
+.button:disabled {
   background:transparent;
   border:1px dashed rgba(0,0,0,0.25);
   color:rgba(0,0,0,0.25);
@@ -211,28 +186,13 @@ button:disabled,
   }
 
 .button.disabled:hover,
-.button:disabled:hover,
-button.disabled:hover,
-button:disabled:hover,
-[type=submit]:disabled:hover,
-[type=button]:disabled:hover {
+.button:disabled:hover {
   background:transparent;
   }
 
 .button.disabled:focus,
-.button:disabled:focus,
-button.disabled:focus,
-button:disabled:focus,
-[type=submit]:disabled:focus,
-[type=button]:disabled:focus {
+.button:disabled:focus {
   box-shadow:none;
-  }
-
-.button.short {
-  height:30px;
-  padding-top:5px;
-  padding-bottom:5px;
-  vertical-align:middle;
   }
 
 form fieldset {

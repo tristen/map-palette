@@ -166,7 +166,7 @@ class App extends Component {
 
             <button
               onClick={reverseSwatches.bind(this, swatches.slice(0).reverse())}
-              className='pin-right fill-darken z1 icon reverse space-right2 dot map-control'
+              className='pin-right button fill-darken z1 icon reverse space-right2 dot map-control'
             />
           </div>
 

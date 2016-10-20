@@ -21,7 +21,6 @@ export default class Map extends Component {
     });
 
     this.map.addControl(new mapboxgl.Navigation());
-    this.map.addControl(new mapboxgl.Geolocate());
 
     this.map.on('click', (e) => {
       toggleColorPicker(false);
