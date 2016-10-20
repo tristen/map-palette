@@ -10,6 +10,13 @@ export function updateSwatch(index, hex) {
   };
 }
 
+export function sortSwatches(obj) {
+  return {
+    type: types.SORT_SWATCHES,
+    obj
+  };
+}
+
 export function updateAllSwatches(swatches) {
   return {
     type: types.UPDATE_ALL_SWATCHES,

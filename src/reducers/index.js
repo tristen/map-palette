@@ -32,13 +32,25 @@ const data = (state = initialState, action) => {
     });
 
     case types.SWATCH:
-      const swatches = state.swatches.slice(0);
-      swatches[action.index] = action.hex;
+      const updateSwatches = state.swatches.slice(0);
+      updateSwatches[action.index] = action.hex;
       return Object.assign({}, state, {
       style: traverse(state.style).map(function(d) {
         if (d === state.swatches[action.index]) this.update(action.hex);
       }),
-      swatches
+      swatches: updateSwatches
+    });
+
+    case types.SORT_SWATCHES:
+      var sortedSwatches = state.swatches.slice(0);
+      for (let prop in action.obj) sortedSwatches[prop] = action.obj[prop];
+      return Object.assign({}, state, {
+        style: traverse(state.style).map(function(d) {
+          state.swatches.forEach((swatch, i) => {
+            if (d === swatch) this.update(sortedSwatches[i]);
+          });
+        }),
+        swatches: sortedSwatches
     });
 
     case types.TOGGLE_COLORPICKER:

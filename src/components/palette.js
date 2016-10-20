@@ -3,10 +3,6 @@ import Swatch from './swatch';
 import getDragDropContext from '../utils/dnd_context';
 
 export default class Palette extends Component {
-  constructor(props) {
-    super(props);
-    this.moveSwatch = this.moveSwatch.bind(this);
-  }
 
   getChildContext() {
     return {
@@ -14,17 +10,14 @@ export default class Palette extends Component {
     };
   }
 
-  moveSwatch(obj) {
-    const { swatches, updateAllSwatches } = this.props;
-    // console.log('prev:', swatches);
-    // console.log('next:', obj);
-
-    for (let prop in obj) swatches[prop] = obj[prop];
-    updateAllSwatches(swatches);
-  }
-
   render() {
-    const { updateSwatch, toggleColorPicker, picker, swatches } = this.props;
+    const {
+      updateSwatch,
+      sortSwatches,
+      toggleColorPicker,
+      picker,
+      swatches
+    } = this.props;
 
     function renderSwatch(d, i)  {
       return (
@@ -33,7 +26,7 @@ export default class Palette extends Component {
           index={i}
           toggleColorPicker={toggleColorPicker}
           updateSwatch={updateSwatch}
-          moveSwatch={this.moveSwatch}
+          moveSwatch={sortSwatches}
           picker={picker}
           value={d} />
       );
@@ -64,6 +57,6 @@ Palette.propTypes = {
   ]),
   toggleColorPicker: PropTypes.func.isRequired,
   updateSwatch: PropTypes.func.isRequired,
-  updateAllSwatches: PropTypes.func.isRequired,
+  sortSwatches: PropTypes.func.isRequired,
   swatches: PropTypes.array.isRequired
 };

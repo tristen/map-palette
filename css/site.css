@@ -59,6 +59,8 @@ button.unstyled {
   }
 
 .swatch button { cursor:move; }
+  .swatch button.active { cursor:default; }
+
 .swatch:first-child button  { border-radius:3px 0 0 3px; }
 .swatch:last-child button   { border-radius:0 3px 3px 0; }
 

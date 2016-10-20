@@ -125,6 +125,7 @@ class App extends Component {
       updateSwatch,
       updateAllSwatches,
       reverseSwatches,
+      sortSwatches,
       toggleColorPicker
     } = this.props;
 
@@ -158,8 +159,8 @@ class App extends Component {
               <Palette
                 picker={picker}
                 toggleColorPicker={toggleColorPicker}
-                updateAllSwatches={updateAllSwatches}
                 updateSwatch={updateSwatch}
+                sortSwatches={sortSwatches}
                 swatches={swatches} />
             </div>
 
