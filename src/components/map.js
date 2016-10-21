@@ -43,5 +43,6 @@ export default class Map extends Component {
 
 Map.propTypes = {
   toggleColorPicker: PropTypes.func.isRequired,
+  loadingState: PropTypes.func.isRequired,
   style: PropTypes.object.isRequired
 };

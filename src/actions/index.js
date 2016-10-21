@@ -37,3 +37,10 @@ export function reverseSwatches(swatches) {
     swatches
   };
 }
+
+export function loadingState(state) {
+  return {
+    type: types.LOADING,
+    state
+  };
+}

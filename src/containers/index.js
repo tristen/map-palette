@@ -67,13 +67,18 @@ class App extends Component {
   }
 
   upload(ev) {
-    const { updateAllSwatches } = this.props;
+    const { updateAllSwatches, loadingState } = this.props;
     const file = ev.currentTarget ? ev.currentTarget.files[0] : ev;
     if (!this.valid(file)) return window.alert('Filetype is unsupported');
+    loadingState(true);
     const reader = new FileReader;
     reader.onload = (e) => {
       getPixels(e.target.result, ((err, d) => {
-        if (err) return window.alert('Pixels could not be pulled from image');
+        if (err) {
+          loadingState(false);
+          window.alert('Pixels could not be pulled from image');
+          return;
+        }
 
         // Sort colors from light to dark.
         // 1. Convert to HSV
@@ -92,6 +97,7 @@ class App extends Component {
           return d.toHexString();
         });
 
+        loadingState(false);
         updateAllSwatches(swatches);
       }));
     };
@@ -118,6 +124,8 @@ class App extends Component {
 
   render() {
     const {
+      loading,
+      loadingState,
       swatches,
       manual,
       style,
@@ -129,13 +137,16 @@ class App extends Component {
       toggleColorPicker
     } = this.props;
 
+    const isLoading = loading ? 'loading' : '';
+
     return (
       <DragDrop upload={this.upload}>
-        <div className={`pin-topright pin-bottomright col12`}>
+        <div className={`pin-topright pin-bottomright col12 ${isLoading}`}>
           <Map
             toggleColorPicker={toggleColorPicker}
+            loadingState={loadingState}
             style={style} />
-          <header className='pin-topleft z10 pad1'>
+          <header className='pin-topleft z1 pad1'>
             <div className='lifted keyline-stroke round'>
               <div className='clearfix pad2'>
                 <h3 className='space-bottom1'>Map palette</h3>

@@ -6,6 +6,7 @@ import defaultStyle from '../data/default_style';
 
 // Colors based on those found in the default style.
 const initialState = {
+  loading: false,
   picker: false,
   style: defaultStyle,
   swatches: [
@@ -56,6 +57,11 @@ const data = (state = initialState, action) => {
     case types.TOGGLE_COLORPICKER:
       return Object.assign({}, state, {
         picker: action.index
+      })
+
+    case types.LOADING:
+      return Object.assign({}, state, {
+        loading: action.state
       })
 
     default:
